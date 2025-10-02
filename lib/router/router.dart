@@ -37,15 +37,14 @@ final GoRouter router = GoRouter(
           AssetScreen(), // 💡 Apakah ini memang diinginkan?
     ),
     GoRoute(
-  name: 'predict',
-  path: '/predict',
-  builder: (context, state) {
-    print("adi 2.1");
-    final File? imageFile = state.extra as File?;
-    print("adi 2:$imageFile");
-    return ImagePickerPage(imageFile: imageFile);
-  },
-),
-
+      name: 'predict',
+      path: '/predict',
+      builder: (context, state) {
+        print("adi 2.1");
+        final File? imageFile = state.extra as File?;
+        print("adi 2:$imageFile");
+        return ImagePickerPage(imageFile: imageFile);
+      },
+    ),
   ],
 );

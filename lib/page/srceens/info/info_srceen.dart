@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nutrisnap_mobile/utils/color.dart';
 
 class InfoScreen extends StatelessWidget {
-  const InfoScreen({super.key}); // ✅ Added super.key
+  const InfoScreen({super.key}); //
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tentang Aplikasi"), // ✅ Fixed placeholder text
+        title: Text(
+          "Tentang Aplikasi",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: NutrisnapColors.primary,
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            context.pop();
+          },
+        ),
       ),
       body: Center(
         child: Column(

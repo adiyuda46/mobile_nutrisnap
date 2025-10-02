@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nutrisnap_mobile/utils/color.dart';
 
 class HelpScreen extends StatelessWidget {
   const HelpScreen({super.key});
@@ -7,7 +9,18 @@ class HelpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Help Aplikasi"), // ✅ Fixed placeholder text
+        title: Text(
+          "Help Aplikasi",
+          style: TextStyle(color: Colors.white),
+        ), 
+        backgroundColor: NutrisnapColors.primary,
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            context.pop();
+          },
+        ),
       ),
       body: Center(
         child: Column(

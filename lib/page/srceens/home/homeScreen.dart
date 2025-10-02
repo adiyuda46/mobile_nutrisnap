@@ -99,8 +99,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         MenuButton(
                           icon: Icons.folder,
                           label: 'ASSET',
-                          onPressed: () {
-                            context.pushNamed('asset');
+                          onPressed: () async {
+                            final XFile? pickedFile = await ImagePicker()
+                                .pickImage(source: ImageSource.gallery);
+                            if (pickedFile != null) {
+                              final File imageFile = File(pickedFile.path);
+                              print(
+                                  "Gambar dipilih dari galeri: ${imageFile.path}");
+                              context.pushNamed('predict', extra: imageFile);
+                            } else {
+                              print("Tidak ada gambar yang dipilih");
+                            }
                           },
                           backgroundColor: NutrisnapColors.primary,
                           textColor: Colors.white,
@@ -120,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           label: 'INFO',
                           onPressed: () {
                             context.push(
-                                '/home'); // 💡 Cukup jika rute /home ada di GoRouter
+                                '/info'); // 💡 Cukup jika rute /home ada di GoRouter
                           },
                           backgroundColor: NutrisnapColors.primary,
                           textColor: Colors.white,
