@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrisnap_mobile/page/srceens/asset/asser_screen.dart';
+import 'package:nutrisnap_mobile/page/srceens/gizi/gizi_srceen.dart';
 import 'package:nutrisnap_mobile/page/srceens/help/help_srceen.dart';
 import 'package:nutrisnap_mobile/page/srceens/home/homeScreen.dart';
 import 'package:nutrisnap_mobile/page/srceens/info/info_srceen.dart';
@@ -40,10 +41,16 @@ final GoRouter router = GoRouter(
       name: 'predict',
       path: '/predict',
       builder: (context, state) {
-        print("adi 2.1");
         final File? imageFile = state.extra as File?;
-        print("adi 2:$imageFile");
         return ImagePickerPage(imageFile: imageFile);
+      },
+    ),
+    GoRoute(
+      name: 'gizi',
+      path: '/gizi',
+      builder: (context, state) {
+        final File? imageFile = state.extra as File?;
+        return GiziSrceen(imageFile: imageFile);
       },
     ),
   ],

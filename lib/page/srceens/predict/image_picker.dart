@@ -60,18 +60,18 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
             ),
             const SizedBox(height: 20),
             CustomElevatedButton(
-              label: 'Klik Saya!',
-              onPressed: () {
-                print('Tombol ditekan!');
-              },
+              label: 'Submit',
+              onPressed: _imageFile == null
+                  ? null
+                  : () {
+                      context.pushNamed('gizi', extra: _imageFile);
+                    },
               backgroundColor: NutrisnapColors.primary,
               horizontalPadding: 100,
               verticalPadding: 20,
               borderRadius: 16,
               fontSize: 18,
               fontWeight: FontWeight.w500,
-              
-              
             )
           ],
         ),
