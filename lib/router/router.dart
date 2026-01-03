@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrisnap_mobile/page/srceens/asset/asser_screen.dart';
+import 'package:nutrisnap_mobile/page/srceens/gizi/gizi_detail_screen.dart';
 import 'package:nutrisnap_mobile/page/srceens/gizi/gizi_srceen.dart';
 import 'package:nutrisnap_mobile/page/srceens/help/help_srceen.dart';
 import 'package:nutrisnap_mobile/page/srceens/home/homeScreen.dart';
@@ -52,6 +53,11 @@ final GoRouter router = GoRouter(
         final File? imageFile = state.extra as File?;
         return GiziSrceen(imageFile: imageFile);
       },
+    ),
+    GoRoute(
+      name: 'gizi_detail',
+      path: '/gizi_detail',
+      builder: (context, state) => GiziDetailScreen()
     ),
   ],
 );

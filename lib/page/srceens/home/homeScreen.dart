@@ -114,26 +114,26 @@ class _HomeScreenState extends State<HomeScreen> {
                           backgroundColor: NutrisnapColors.primary,
                           textColor: Colors.white,
                         ),
-                        MenuButton(
-                          icon: Icons.help_outline,
-                          label: 'HELP',
-                          onPressed: () {
-                            context.pushNamed(
-                                'help'); // 💡 Sekarang aman jika 'home' punya name
-                          },
-                          backgroundColor: NutrisnapColors.primary,
-                          textColor: Colors.white,
-                        ),
-                        MenuButton(
-                          icon: Icons.info_outline,
-                          label: 'INFO',
-                          onPressed: () {
-                            context.push(
-                                '/info'); // 💡 Cukup jika rute /home ada di GoRouter
-                          },
-                          backgroundColor: NutrisnapColors.primary,
-                          textColor: Colors.white,
-                        ),
+                        // MenuButton(
+                        //   icon: Icons.help_outline,
+                        //   label: 'HELP',
+                        //   onPressed: () {
+                        //     context.pushNamed(
+                        //         'help'); // 💡 Sekarang aman jika 'home' punya name
+                        //   },
+                        //   backgroundColor: NutrisnapColors.primary,
+                        //   textColor: Colors.white,
+                        // ),
+                        // MenuButton(
+                        //   icon: Icons.info_outline,
+                        //   label: 'INFO',
+                        //   onPressed: () {
+                        //     context.push(
+                        //         '/info'); // 💡 Cukup jika rute /home ada di GoRouter
+                        //   },
+                        //   backgroundColor: NutrisnapColors.primary,
+                        //   textColor: Colors.white,
+                        // ),
                       ],
                     ),
                   ),

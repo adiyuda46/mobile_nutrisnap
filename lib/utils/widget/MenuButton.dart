@@ -23,7 +23,7 @@ class MenuButton extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 6),
         width: double.infinity,
-        height: 100,
+        height: 200,
         child: ElevatedButton.icon(
           icon: Icon(icon, color: textColor, size: 28),
           label: Text(

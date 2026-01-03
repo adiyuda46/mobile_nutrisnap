@@ -280,7 +280,9 @@ class _GiziSrceenState extends State<GiziSrceen> {
                   ),
                   CustomElevatedButton(
                     label: 'Detail Gizi',
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushNamed('gizi_detail');
+                    },
                     backgroundColor: NutrisnapColors.primary,
                     horizontalPadding: 100,
                     verticalPadding: 10,
