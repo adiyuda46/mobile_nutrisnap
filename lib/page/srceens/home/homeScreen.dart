@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nutrisnap_mobile/page/srceens/predict/image_picker.dart';
 import 'package:nutrisnap_mobile/utils/color.dart';
 import 'package:nutrisnap_mobile/utils/widget/MenuButton.dart';
 import 'package:image_picker/image_picker.dart';
@@ -15,18 +14,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-// Menyimpan file gambar yang dipilih
-  //late File? _imageFile;
-
-  // Membuat instance ImagePicker
   final ImagePicker _picker = ImagePicker();
 
   Future<void> pickImage(ImageSource source) async {
     final XFile? pickedFile = await _picker.pickImage(source: source);
     if (pickedFile != null) {
-      setState(() {
-       // _imageFile = File(pickedFile.path);
-      });
+      setState(() {});
     }
   }
 
@@ -41,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Container(
+                  child: SizedBox(
                     height: tinggi * 0.15,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -88,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 source: ImageSource.camera);
                             if (pickedFile != null) {
                               final File imageFile = File(pickedFile.path);
-                              context.pushNamed('predict', extra: imageFile);
+                              context.go('/preview', extra: imageFile);
                             }
                           },
                           backgroundColor: NutrisnapColors.primary,
@@ -104,14 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               final File imageFile = File(pickedFile.path);
                               print(
                                   "Gambar dipilih dari galeri: ${imageFile.path}");
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ImagePickerPage(
-                                    imageFile: imageFile,
-                                  ),
-                                ),
-                              );
+                              context.go('/preview', extra: imageFile);
                             } else {
                               print("Tidak ada gambar yang dipilih");
                             }

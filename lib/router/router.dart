@@ -1,13 +1,17 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:nutrisnap_mobile/page/srceens/home/homeScreen.dart';
+import 'package:nutrisnap_mobile/page/srceens/predict/image_picker.dart';
 import 'package:nutrisnap_mobile/page/srceens/splash/splash.dart';
 
 final GoRouter router = GoRouter(
   routes: <RouteBase>[
     GoRoute(
       path: '/',
-      builder: (BuildContext context,GoRouterState state) {
+      builder: (BuildContext context, GoRouterState state) {
         return Splash();
       },
       routes: <RouteBase>[
@@ -16,7 +20,14 @@ final GoRouter router = GoRouter(
           builder: (BuildContext context, GoRouterState state) {
             return HomeScreen();
           },
-        )
+        ),
+        GoRoute(
+          path: '/preview',
+          builder: (context, state) {
+            final File? imageFile = state.extra as File?;
+            return ImagePickerPage(imageFile: imageFile);
+          },
+        ),
       ],
     ),
   ],

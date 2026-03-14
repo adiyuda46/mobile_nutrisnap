@@ -1,8 +1,10 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:nutrisnap_mobile/page/srceens/gizi/gizi_srceen.dart';
 import 'package:nutrisnap_mobile/utils/color.dart';
 import 'package:nutrisnap_mobile/utils/widget/button_primary.dart';
 
@@ -18,13 +20,17 @@ class ImagePickerPage extends StatefulWidget {
 class _ImagePickerPageState extends State<ImagePickerPage> {
   File? _imageFile;
 
-  final ImagePicker _picker = ImagePicker();
 
   @override
   void initState() {
     super.initState();
-    // Ambil gambar dari state.extra di constructor
     _imageFile = widget.imageFile;
+  }
+
+  //
+  Future<String?> convertFileToBase64(File file) async {
+    final bytes = await file.readAsBytes();
+    return base64Encode(bytes);
   }
 
   @override
@@ -63,8 +69,18 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
               label: 'Submit',
               onPressed: _imageFile == null
                   ? null
-                  : () {
-                      context.pushNamed('gizi', extra: _imageFile);
+                  : () async {
+                      final base64Image =
+                          await convertFileToBase64(_imageFile!);
+                      Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => GiziSrceen(
+                                     imageFile: _imageFile,
+                                    buahBase64: 'data:image/jpeg;base64,$base64Image',
+                                  ),
+                                ),
+                              );
                     },
               backgroundColor: NutrisnapColors.primary,
               horizontalPadding: 100,
