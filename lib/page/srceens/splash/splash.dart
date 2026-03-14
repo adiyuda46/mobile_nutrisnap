@@ -10,23 +10,20 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
- 
   @override
-  void initState() {
+ void initState() {
     super.initState();
-
-    // Delay 3 detik, lalu redirect ke /home
     Future.delayed(const Duration(seconds: 3), () {
-      print("=== 1");
-      context.pushReplacement('/home');
+      if (mounted) {
+        context.go('/home');
+      }
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: NutrisnapColors.primary, // Warna #12372A
+      backgroundColor: NutrisnapColors.primary, 
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -43,7 +40,7 @@ class _SplashState extends State<Splash> {
             const SizedBox(height: 40),
             Image.asset(
               'assets/images/icons.png',
-              width: 180, 
+              width: 180,
               height: 180,
               fit: BoxFit.contain,
             ),
