@@ -7,12 +7,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GlobalStateProvider(child: MaterialApp.router(
-      routerConfig: router,
-      theme: ThemeData(
-        primaryColor: Colors.blue
+    return GlobalStateProvider(
+      child: MaterialApp.router(
+        routerConfig: router,
+        theme: ThemeData(primaryColor: Colors.blue),
+        debugShowCheckedModeBanner: false,
       ),
-      debugShowCheckedModeBanner: false,
-    ),);
+    );
   }
 }

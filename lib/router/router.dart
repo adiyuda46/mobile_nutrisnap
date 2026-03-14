@@ -15,49 +15,64 @@ final GoRouter router = GoRouter(
   routes: <RouteBase>[
     GoRoute(
       path: '/',
-      builder: (context, state) => Splash(),
-    ),
-    GoRoute(
-      path: '/home',
-      name: 'home',
-      builder: (context, state) => HomeScreen(),
-    ),
-    GoRoute(
-      path: '/help',
-      name: 'help',
-      builder: (context, state) => HelpScreen(),
-    ),
-    GoRoute(
-      path: '/info',
-      name: 'info',
-      builder: (context, state) => InfoScreen(),
-    ),
-    GoRoute(
-      path: '/asset',
-      name: 'asset', // 👈 Tambahkan name!
-      builder: (context, state) =>
-          AssetScreen(), // 💡 Apakah ini memang diinginkan?
-    ),
-    GoRoute(
-      name: 'predict',
-      path: '/predict',
-      builder: (context, state) {
-        final File? imageFile = state.extra as File?;
-        return ImagePickerPage(imageFile: imageFile);
+      builder: (BuildContext context,GoRouterState state) {
+        return Splash();
       },
-    ),
-    GoRoute(
-      name: 'gizi',
-      path: '/gizi',
-      builder: (context, state) {
-        final File? imageFile = state.extra as File?;
-        return GiziSrceen(imageFile: imageFile);
-      },
-    ),
-    GoRoute(
-      name: 'gizi_detail',
-      path: '/gizi_detail',
-      builder: (context, state) => GiziDetailScreen()
+      routes: <RouteBase>[
+        GoRoute(
+          path: 'home',
+          builder: (BuildContext context, GoRouterState state) {
+            return HomeScreen();
+          },
+        )
+      ],
     ),
   ],
 );
+
+
+
+    // // ga ke pake 
+    // GoRoute(
+    //   path: '/home',
+    //   name: 'home',
+    //   //builder:  (context, state) => HomeScreen(),
+    //   builder: (BuildContext context, GoRouterState state) {
+    //     return const HomeScreen();
+    //   },
+    // ),
+    // GoRoute(
+    //   path: '/help',
+    //   name: 'help',
+    //   builder: (context, state) => HelpScreen(),
+    // ),
+    // GoRoute(
+    //   path: '/info',
+    //   name: 'info',
+    //   builder: (context, state) => InfoScreen(),
+    // ),
+    // GoRoute(
+    //   path: '/asset',
+    //   name: 'asset',
+    //   builder: (context, state) => AssetScreen(),
+    // ),
+    // GoRoute(
+    //   name: 'predict',
+    //   path: '/predict',
+    //   builder: (BuildContext context, GoRouterState state) {
+    //     final File? imageFile = state.extra as File?;
+    //     return ImagePickerPage(imageFile: imageFile);
+    //   },
+    // ),
+    // GoRoute(
+    //   name: 'gizi',
+    //   path: '/gizi',
+    //   builder: (context, state) {
+    //     final File? imageFile = state.extra as File?;
+    //     return GiziSrceen(imageFile: imageFile);
+    //   },
+    // ),
+    // GoRoute(
+    //     name: 'gizi_detail',
+    //     path: '/gizi_detail',
+    //     builder: (context, state) => GiziDetailScreen()),
