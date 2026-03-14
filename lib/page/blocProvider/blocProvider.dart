@@ -2,21 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrisnap_mobile/bloc/tes/tes_bloc.dart';
 import 'package:nutrisnap_mobile/bloc/tes1/tes1_bloc.dart';
+import 'package:nutrisnap_mobile/core/injection/injection.dart';
+import 'package:nutrisnap_mobile/page/cubit/predict_cubit.dart';
+import 'package:nutrisnap_mobile/page/srceens/splash/splash.dart';
 
 class GlobalStateProvider extends StatelessWidget {
   final Widget child;
-  const GlobalStateProvider({super.key , required this.child});
+  const GlobalStateProvider({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => TesBloc(),
-        ),
-        BlocProvider(
-          create: (context) => Tes1Bloc(),
-        ),
+        BlocProvider(create: (context) => getIt<PredictCubit>()),
       ],
       child: child,
     );
