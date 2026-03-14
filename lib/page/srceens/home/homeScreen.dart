@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nutrisnap_mobile/page/srceens/predict/image_picker.dart';
 import 'package:nutrisnap_mobile/utils/color.dart';
 import 'package:nutrisnap_mobile/utils/widget/MenuButton.dart';
 import 'package:image_picker/image_picker.dart';
@@ -15,17 +16,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 // Menyimpan file gambar yang dipilih
-  File? _imageFile;
+  //late File? _imageFile;
 
   // Membuat instance ImagePicker
   final ImagePicker _picker = ImagePicker();
 
-  /// Memanggil kamera atau galeri sesuai [source] yang dipilih.
-  Future<void> _pickImage(ImageSource source) async {
+  Future<void> pickImage(ImageSource source) async {
     final XFile? pickedFile = await _picker.pickImage(source: source);
     if (pickedFile != null) {
       setState(() {
-        _imageFile = File(pickedFile.path);
+       // _imageFile = File(pickedFile.path);
       });
     }
   }
@@ -33,7 +33,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     var tinggi = MediaQuery.of(context).size.height;
-    var lebar = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -89,7 +88,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 source: ImageSource.camera);
                             if (pickedFile != null) {
                               final File imageFile = File(pickedFile.path);
-                              print("adi :$imageFile");
                               context.pushNamed('predict', extra: imageFile);
                             }
                           },
@@ -106,7 +104,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               final File imageFile = File(pickedFile.path);
                               print(
                                   "Gambar dipilih dari galeri: ${imageFile.path}");
-                              context.pushNamed('predict', extra: imageFile);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ImagePickerPage(
+                                    imageFile: imageFile,
+                                  ),
+                                ),
+                              );
                             } else {
                               print("Tidak ada gambar yang dipilih");
                             }
@@ -114,26 +119,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           backgroundColor: NutrisnapColors.primary,
                           textColor: Colors.white,
                         ),
-                        // MenuButton(
-                        //   icon: Icons.help_outline,
-                        //   label: 'HELP',
-                        //   onPressed: () {
-                        //     context.pushNamed(
-                        //         'help'); // 💡 Sekarang aman jika 'home' punya name
-                        //   },
-                        //   backgroundColor: NutrisnapColors.primary,
-                        //   textColor: Colors.white,
-                        // ),
-                        // MenuButton(
-                        //   icon: Icons.info_outline,
-                        //   label: 'INFO',
-                        //   onPressed: () {
-                        //     context.push(
-                        //         '/info'); // 💡 Cukup jika rute /home ada di GoRouter
-                        //   },
-                        //   backgroundColor: NutrisnapColors.primary,
-                        //   textColor: Colors.white,
-                        // ),
                       ],
                     ),
                   ),
