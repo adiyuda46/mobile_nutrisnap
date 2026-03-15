@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:nutrisnap_mobile/utils/color.dart';
-import 'package:nutrisnap_mobile/utils/widget/MenuButton.dart';
+
 
 class PredictScreen extends StatefulWidget {
   final File? imageFile;
@@ -16,7 +16,6 @@ class PredictScreen extends StatefulWidget {
 class _PredictScreenState extends State<PredictScreen> {
   bool _isProcessing = false;
   String _predictionResult = '';
-  final _controller = TextEditingController();
 
   @override
   void initState() {
@@ -52,7 +51,6 @@ class _PredictScreenState extends State<PredictScreen> {
   @override
   Widget build(BuildContext context) {
     var tinggi = MediaQuery.of(context).size.height;
-    var lebar = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: SafeArea(

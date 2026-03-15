@@ -7,7 +7,7 @@ class AssetScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("assetttb"), // ✅ Fixed placeholder text
+        title: Text("assetttb"),
       ),
       body: Center(
         child: Column(

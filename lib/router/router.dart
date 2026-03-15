@@ -2,8 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:nutrisnap_mobile/page/srceens/home/homeScreen.dart';
+import 'package:nutrisnap_mobile/page/srceens/home/home_screen.dart';
 import 'package:nutrisnap_mobile/page/srceens/predict/image_picker.dart';
 import 'package:nutrisnap_mobile/page/srceens/splash/splash.dart';
 
