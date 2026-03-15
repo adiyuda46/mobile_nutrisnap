@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nutrisnap_mobile/page/blocProvider/blocProvider.dart';
+import 'package:nutrisnap_mobile/page/blocProvider/bloc_provider.dart';
 import 'package:nutrisnap_mobile/router/router.dart';
 
 class App extends StatelessWidget {
