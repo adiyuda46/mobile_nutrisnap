@@ -95,11 +95,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 .pickImage(source: ImageSource.gallery);
                             if (pickedFile != null) {
                               final File imageFile = File(pickedFile.path);
-                              debugPrint("Gambar dipilih dari galeri: ${imageFile.path}");
-                              context.go('/preview', extra: imageFile);
+                              debugPrint(
+                                  "Gambar dipilih dari galeri: ${imageFile.path}");
+                               context.go('/preview', extra: imageFile);
                             } else {
                               debugPrint("Tidak ada gambar yang dipilih");
-                
                             }
                           },
                           backgroundColor: NutrisnapColors.primary,

@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nutrisnap_mobile/page/srceens/gizi/gizi_detail_screen.dart';
+import 'package:nutrisnap_mobile/page/srceens/gizi/gizi_srceen.dart';
 import 'package:nutrisnap_mobile/page/srceens/home/home_screen.dart';
 import 'package:nutrisnap_mobile/page/srceens/predict/image_picker.dart';
 import 'package:nutrisnap_mobile/page/srceens/splash/splash.dart';
@@ -21,12 +23,40 @@ final GoRouter router = GoRouter(
           },
         ),
         GoRoute(
-          path: '/preview',
-          builder: (context, state) {
+          path: 'preview',
+          builder: (BuildContext context, GoRouterState state) {
             final File? imageFile = state.extra as File?;
             return ImagePickerPage(imageFile: imageFile);
           },
         ),
+        GoRoute(
+          path: 'gizi',
+          builder: (BuildContext context, GoRouterState state) {
+            final dynamic extraData = state.extra;
+            if (extraData is Map<String, dynamic>) {
+              final File? imageFile = extraData['imageFile'] as File?;
+              final String? buahBase64 = extraData['base64Image'] as String?;
+              return GiziSrceen(
+                imageFile: imageFile,
+                buahBase64: buahBase64,
+              );
+            }
+            return Scaffold(
+              body: Center(
+                child: Text(
+                  'Data tidak ditemukan atau tidak valid',
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
+            );
+          },
+        ),
+        GoRoute(
+          path: 'gizi_detail',
+          builder: (BuildContext context, GoRouterState state) {
+            return GiziDetailScreen();
+          },
+        )
       ],
     ),
   ],

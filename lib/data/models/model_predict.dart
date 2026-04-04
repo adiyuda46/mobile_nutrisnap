@@ -9,15 +9,15 @@ class GiziBuah {
     message = json['message'];
     response = json['response'];
     result =
-        json['result'] != null ? new Result.fromJson(json['result']) : null;
+        json['result'] != null ? Result.fromJson(json['result']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['message'] = this.message;
-    data['response'] = this.response;
-    if (this.result != null) {
-      data['result'] = this.result!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['message'] = message;
+    data['response'] = response;
+    if (result != null) {
+      data['result'] = result!.toJson();
     }
     return data;
   }
@@ -55,15 +55,15 @@ class Result {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Energi'] = this.energi;
-    data['GiziUnggulan1'] = this.giziUnggulan1;
-    data['GiziUnggulan2'] = this.giziUnggulan2;
-    data['GiziUnggulan3'] = this.giziUnggulan3;
-    data['Karbo'] = this.karbo;
-    data['Label'] = this.label;
-    data['Lemak'] = this.lemak;
-    data['Protein'] = this.protein;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['Energi'] = energi;
+    data['GiziUnggulan1'] = giziUnggulan1;
+    data['GiziUnggulan2'] = giziUnggulan2;
+    data['GiziUnggulan3'] = giziUnggulan3;
+    data['Karbo'] = karbo;
+    data['Label'] = label;
+    data['Lemak'] = lemak;
+    data['Protein'] = protein;
     return data;
   }
 }

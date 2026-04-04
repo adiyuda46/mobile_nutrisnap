@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -19,6 +20,15 @@ class GiziSrceen extends StatefulWidget {
 class _GiziSrceenState extends State<GiziSrceen> {
   File? _imageFile;
   String? _buahBase64;
+
+  
+  // base 64
+  Future<String?> convertFileToBase64(File file) async {
+    final bytes = await file.readAsBytes();
+    return base64Encode(bytes);
+  }
+
+ late final String? base64Image;
 
   @override
   void initState() {
@@ -53,11 +63,10 @@ class _GiziSrceenState extends State<GiziSrceen> {
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<PredictCubit, PredictCubitState>(
           builder: (context, state) {
-            if (state is PredictCubitState) {
-              print('Hasil Prediksi: ${state.giziBuah?.result?.label}');
-            }
-            if (state is PredictCubitState) {
-              print('Gagal  prediksi: ${state.error}');
+            if (state is PredictLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             }
             return Column(
               //crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +81,6 @@ class _GiziSrceenState extends State<GiziSrceen> {
                             "data tidak di temukan",
                         style: TextStyle(fontSize: 25),
                       ),
-
                       _imageFile != null
                           ? Container(
                               width: double.infinity,
@@ -302,9 +310,12 @@ class _GiziSrceenState extends State<GiziSrceen> {
                       ),
                       CustomElevatedButton(
                         label: 'Detail Gizi',
+                        //context.go('gizi_detail'),
                         onPressed: () {
-                          context.pushNamed('gizi_detail');
+                          context.go('/gizi_detail');
+                          //context.pushNamed('gizi_detail');
                         },
+                        //context.go('gizi_detail'),
                         backgroundColor: NutrisnapColors.primary,
                         horizontalPadding: 100,
                         verticalPadding: 10,

@@ -13,7 +13,7 @@ class PredictRepository {
       final result = await _predictDataSource.predictBuah(buah);
       return result;
     } catch (e) {
-      rethrow; // Lanjutkan error ke Cubit
+      rethrow; 
     }
   }
 }

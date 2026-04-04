@@ -19,14 +19,13 @@ class ImagePickerPage extends StatefulWidget {
 class _ImagePickerPageState extends State<ImagePickerPage> {
   File? _imageFile;
 
-
   @override
   void initState() {
     super.initState();
     _imageFile = widget.imageFile;
   }
 
-  //
+  // base 64
   Future<String?> convertFileToBase64(File file) async {
     final bytes = await file.readAsBytes();
     return base64Encode(bytes);
@@ -71,15 +70,19 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
                   : () async {
                       final base64Image =
                           await convertFileToBase64(_imageFile!);
-                      Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => GiziSrceen(
-                                     imageFile: _imageFile,
-                                    buahBase64: 'data:image/jpeg;base64,$base64Image',
-                                  ),
-                                ),
-                              );
+                      // Navigator.push(
+                      //           context,
+                      //           MaterialPageRoute(
+                      //             builder: (context) => GiziSrceen(
+                      //                imageFile: _imageFile,
+                      //               buahBase64: 'data:image/jpeg;base64,$base64Image',
+                      //             ),
+                      //           ),
+                      //         );
+                      context.go('/gizi', extra: {
+                        'imageFile': _imageFile,
+                        'base64Image': 'data:image/jpeg;base64,$base64Image',
+                      });
                     },
               backgroundColor: NutrisnapColors.primary,
               horizontalPadding: 100,

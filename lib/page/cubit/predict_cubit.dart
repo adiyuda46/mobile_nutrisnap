@@ -11,7 +11,7 @@ class PredictCubitState {
 }
 
 class PredictCubitInitial extends PredictCubitState {
-  PredictCubitInitial() :super();
+  PredictCubitInitial() : super();
 }
 
 @injectable
@@ -21,6 +21,8 @@ class PredictCubit extends Cubit<PredictCubitState> {
   PredictCubit(this._predictRepository) : super(PredictCubitInitial());
 
   Future<void> predictBuah(String buah) async {
+    //emit(PredictCubitState(giziBuah: null, error: null, isLoading: true));
+    emit(PredictLoading());
     try {
       final giziBuah = await _predictRepository.predictBuah(buah);
       emit(PredictCubitState(giziBuah: giziBuah));
@@ -30,3 +32,4 @@ class PredictCubit extends Cubit<PredictCubitState> {
   }
 }
 
+class PredictLoading extends PredictCubitState {}
