@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nutrisnap_mobile/page/srceens/gizi/gizi_srceen.dart';
 import 'package:nutrisnap_mobile/utils/color.dart';
 import 'package:nutrisnap_mobile/utils/widget/button_primary.dart';
 
@@ -70,15 +69,6 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
                   : () async {
                       final base64Image =
                           await convertFileToBase64(_imageFile!);
-                      // Navigator.push(
-                      //           context,
-                      //           MaterialPageRoute(
-                      //             builder: (context) => GiziSrceen(
-                      //                imageFile: _imageFile,
-                      //               buahBase64: 'data:image/jpeg;base64,$base64Image',
-                      //             ),
-                      //           ),
-                      //         );
                       context.go('/gizi', extra: {
                         'imageFile': _imageFile,
                         'base64Image': 'data:image/jpeg;base64,$base64Image',

@@ -12,8 +12,11 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../data/datasource/detail_gizi_datasource.dart' as _i327;
 import '../../data/datasource/predict_datasource.dart' as _i792;
+import '../../data/repositories/gizi_detail_repository.dart' as _i1006;
 import '../../data/repositories/predict_repository.dart' as _i707;
+import '../../page/cubit/gizi_detail_cubit.dart' as _i385;
 import '../../page/cubit/predict_cubit.dart' as _i696;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -28,8 +31,13 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     gh.factory<_i792.PredictDataSource>(() => _i792.PredictDataSource());
+    gh.factory<_i327.DetailGiziDatasource>(() => _i327.DetailGiziDatasource());
+    gh.factory<_i1006.DetailGiziRepository>(
+        () => _i1006.DetailGiziRepository(gh<_i327.DetailGiziDatasource>()));
     gh.factory<_i707.PredictRepository>(
         () => _i707.PredictRepository(gh<_i792.PredictDataSource>()));
+    gh.factory<_i385.DetailGiziCubit>(
+        () => _i385.DetailGiziCubit(gh<_i1006.DetailGiziRepository>()));
     gh.factory<_i696.PredictCubit>(
         () => _i696.PredictCubit(gh<_i707.PredictRepository>()));
     return this;

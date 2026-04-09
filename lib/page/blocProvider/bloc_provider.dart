@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrisnap_mobile/core/injection/injection.dart';
+import 'package:nutrisnap_mobile/page/cubit/gizi_detail_cubit.dart';
 import 'package:nutrisnap_mobile/page/cubit/predict_cubit.dart';
 
 class GlobalStateProvider extends StatelessWidget {
@@ -12,6 +13,7 @@ class GlobalStateProvider extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt<PredictCubit>()),
+        BlocProvider(create: (context) => getIt<DetailGiziCubit>()),
       ],
       child: child,
     );

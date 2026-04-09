@@ -54,7 +54,10 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: 'gizi_detail',
           builder: (BuildContext context, GoRouterState state) {
-            return GiziDetailScreen();
+            final String? labelBuah = state.extra as String?;
+            return GiziDetailScreen(
+              labelBuah: labelBuah,
+            );
           },
         )
       ],

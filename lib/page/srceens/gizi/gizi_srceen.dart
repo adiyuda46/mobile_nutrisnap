@@ -312,7 +312,7 @@ class _GiziSrceenState extends State<GiziSrceen> {
                         label: 'Detail Gizi',
                         //context.go('gizi_detail'),
                         onPressed: () {
-                          context.go('/gizi_detail');
+                          context.go('/gizi_detail',extra: state.giziBuah?.result?.label);
                           //context.pushNamed('gizi_detail');
                         },
                         //context.go('gizi_detail'),

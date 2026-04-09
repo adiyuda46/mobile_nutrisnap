@@ -68,21 +68,3 @@ class Result {
   }
 }
 
-// class GiziBuahV2 {
-//   double? confidence;
-//   String? label;
-
-//   GiziBuahV2({this.confidence, this.label});
-
-//   GiziBuahV2.fromJson(Map<String, dynamic> json) {
-//     confidence = json['confidence'];
-//     label = json['label'];
-//   }
-
-//   Map<String, dynamic> toJson() {
-//     final Map<String, dynamic> data = new Map<String, dynamic>();
-//     data['confidence'] = this.confidence;
-//     data['label'] = this.label;
-//     return data;
-//   }
-// }
