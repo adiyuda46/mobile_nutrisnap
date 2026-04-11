@@ -54,9 +54,7 @@ class _GiziSrceenState extends State<GiziSrceen> {
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            context.pop();
-          },
+          onPressed: () => context.go('/home'),
         ),
       ),
       body: Padding(

@@ -3,42 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrisnap_mobile/page/cubit/gizi_detail_cubit.dart';
 import 'package:nutrisnap_mobile/utils/color.dart';
-
-// Contoh data dummy (bisa diganti dengan data real dari model atau API)
-final List<Map<String, dynamic>> giziData = [
-  {'nama': 'Energi x', 'nilai': '250', 'satuan': 'kcal', 'persenAKG': '12.5%'},
-  {
-    'nama': 'Lemak Total',
-    'nilai': '250',
-    'satuan': 'kcal',
-    'persenAKG': '12.5%'
-  },
-  {'nama': 'Vitamin A', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-  {'nama': 'Vitamin B1', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-  {'nama': 'Vitamin B2', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-  {'nama': 'Vitamin B3', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-  {'nama': 'Vitamin C', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-  {
-    'nama': 'Karbohidrat total',
-    'nilai': '40',
-    'satuan': 'g',
-    'persenAKG': '13.3%'
-  },
-  {'nama': 'Protein', 'nilai': '15', 'satuan': 'g', 'persenAKG': '30%'},
-  {'nama': 'Serat pangan', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-  {'nama': 'Kalsium', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-  {'nama': 'Fosfor', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-  {'nama': 'Natrium', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-  {'nama': 'Kalium', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-  {'nama': 'Tembaga', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-  {'nama': 'Besi', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-  {'nama': 'Seng', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-  {'nama': 'B-Karoten', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-  {'nama': 'Karoten', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-  {'nama': 'Air', 'nilai': '40', 'satuan': 'mg', 'persenAKG': '44%'},
-];
-
-// Tambah item lain sesuai kebutuhan
+import 'package:nutrisnap_mobile/utils/widget/row_detail_gizi.dart';
 
 class GiziDetailScreen extends StatefulWidget {
   final String? labelBuah;
@@ -56,7 +21,9 @@ class _GiziDetailScreenState extends State<GiziDetailScreen> {
   void initState() {
     _labelBuah = widget.labelBuah;
 
-    context.read<DetailGiziCubit>().giziDetail(_labelBuah ?? "data tidak dikirim");
+    context
+        .read<DetailGiziCubit>()
+        .giziDetail(_labelBuah ?? "data tidak dikirim");
 
     super.initState();
   }
@@ -85,11 +52,113 @@ class _GiziDetailScreenState extends State<GiziDetailScreen> {
           }
           return Column(
             children: [
-              Container(
-                child: Text("tess detail "),
+              Text(
+                "Informasi Nilai Gizi",
+                style: TextStyle(fontSize: 28),
               ),
-              Text(state.giziBuahDetail?.result?.air ?? "data tidak di temukan")
-            ],
+              Text("Komposisi gizi makanan dihitung per 100 g"),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  //height: 200,
+                  //width: 100,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: NutrisnapColors.primary),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      children: [
+                        GiziDetailRow(
+                          label: "Air (Water)",
+                          value: state.giziBuahDetail?.result?.air,
+                        ),
+                        GiziDetailRow(
+                          label: "Energi (Energy",
+                          value: state.giziBuahDetail?.result?.energi,
+                        ),
+                        GiziDetailRow(
+                          label: "Protein (Protein)",
+                          value: state.giziBuahDetail?.result?.protein,
+                        ),
+                         GiziDetailRow(
+                          label: "Lemak (Fat)",
+                          value: state.giziBuahDetail?.result?.lemak,
+                        ),
+                         GiziDetailRow(
+                          label: "Karbohidrat (CHO)",
+                          value: state.giziBuahDetail?.result?.karbo,
+                        ),
+                         GiziDetailRow(
+                          label: "Serat (Fibre)",
+                          value: state.giziBuahDetail?.result?.seratPangan,
+                        ),
+                        GiziDetailRow(
+                          label: "Abu (ASH)",
+                          value: state.giziBuahDetail?.result?.abu,
+                        ),
+                        GiziDetailRow(
+                          label: "Kalsium (Ca)",
+                          value: state.giziBuahDetail?.result?.kalsium,
+                        ),
+                        GiziDetailRow(
+                          label: "Fosfor (P)",
+                          value: state.giziBuahDetail?.result?.fosfor,
+                        ),
+                        GiziDetailRow(
+                          label: "Besi (Fe)",
+                          value: state.giziBuahDetail?.result?.besi,
+                        ),
+                        GiziDetailRow(
+                          label: "Natrium (Na)",
+                          value: state.giziBuahDetail?.result?.natrium,
+                        ),
+                        GiziDetailRow(
+                          label: "Kalium (K)",
+                          value: state.giziBuahDetail?.result?.natrium,
+                        ),
+                        GiziDetailRow(
+                          label: "Tembaga (Cu)",
+                          value: state.giziBuahDetail?.result?.tembaga,
+                        ),
+                        GiziDetailRow(
+                          label: "Seng (Zn)",
+                          value: state.giziBuahDetail?.result?.seng,
+                        ),
+                        GiziDetailRow(
+                          label: "Beta-Karoten (Carotenes)",
+                          value: state.giziBuahDetail?.result?.bKarotene,
+                        ),
+                        GiziDetailRow(
+                          label: "Karoten Total (Re)",
+                          value: state.giziBuahDetail?.result?.karotenTotal,
+                        ),
+                        GiziDetailRow(
+                          label: "Thiamin (Vit. B1)",
+                          value: state.giziBuahDetail?.result?.vitB1,
+                        ),
+                         GiziDetailRow(
+                          label: "Riboflavin (Vit. B2)",
+                          value: state.giziBuahDetail?.result?.vitB2,
+                        ),
+                        GiziDetailRow(
+                          label: "Riboflavin (Vit. B2)",
+                          value: state.giziBuahDetail?.result?.vitB2,
+                        ),
+                        GiziDetailRow(
+                          label: "Niasin (Niacin)",
+                          value: state.giziBuahDetail?.result?.vitB3,
+                        ),
+                        GiziDetailRow(
+                          label: "Vitamin C (Vit. C)",
+                          value: state.giziBuahDetail?.result?.vitC,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+                          ],
           );
         },
       ),
